@@ -31,7 +31,7 @@ const AddSong = () => {
 
         <div className='flex flex-col gap-4'>
           <p>Upload Image</p>
-          <input onCanPlay={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
+          <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
 
           <label htmlFor="image">
             <img src={image ? URL.createObjectURL(image) : assets.upload_area} className='w-24 cursor-pointer' alt="" />
