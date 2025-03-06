@@ -11,6 +11,10 @@ const AddAlbum = () => {
           <img className='w-24 cursor-pointer' src={assets.upload_area} alt="" />
         </label>
       </div>
+      <div className='flex flex-col gap-2.5'>
+        <p>Album Name</p>
+        <input className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)] type="text" placeholder='Type Here' />
+      </div>
     </form>
   )
 }
