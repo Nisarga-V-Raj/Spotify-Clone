@@ -11,6 +11,21 @@ const Sidebar = () => {
                     <img src={assets.add_song} className='w-5 ' alt="" />
                     <p className='hidden sm:block'>Add Song</p>
                 </div>
+
+                <div className='flex items-centergap-2.5 text-gray-800 bg-white border border-black p-2 pr-[max(8vw, 10px)] drop-shadow-[4px_4px_#00FF5B] text-sm font-medium'>
+                    <img src={assets.song_icon} className='w-5 ' alt="" />
+                    <p className='hidden sm:block'>List Song</p>
+                </div>
+
+                <div className='flex items-centergap-2.5 text-gray-800 bg-white border border-black p-2 pr-[max(8vw, 10px)] drop-shadow-[4px_4px_#00FF5B] text-sm font-medium'>
+                    <img src={assets.add_album} className='w-5 ' alt="" />
+                    <p className='hidden sm:block'>Add Album</p>
+                </div>
+
+                <div className='flex items-centergap-2.5 text-gray-800 bg-white border border-black p-2 pr-[max(8vw, 10px)] drop-shadow-[4px_4px_#00FF5B] text-sm font-medium'>
+                    <img src={assets.album_icon} className='w-5 ' alt="" />
+                    <p className='hidden sm:block'>List Album</p>
+                </div>
             </div>
         </div>
     )
