@@ -19,8 +19,14 @@ const addSong = async (req, res) => {
             file: audioUpload.secure_url,
             duration
         }
-    } catch (error) {
 
+        const song = songModel(songData);
+        await song.save();
+
+        res.json({ success: true, message: "Song Added" })
+
+    } catch (error) {
+        res.json({ success: false })
     }
 }
 
