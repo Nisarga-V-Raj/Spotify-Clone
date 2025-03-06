@@ -16,6 +16,7 @@ const AddSong = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append('name', name);
@@ -39,6 +40,7 @@ const AddSong = () => {
       console.log("Failed to add song", error);
       toast.error("Failed to add song");
     }
+    setLoading(false);
   }
 
   return loading ? (
