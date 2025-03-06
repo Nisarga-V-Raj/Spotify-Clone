@@ -19,7 +19,7 @@ const AddSong = () => {
         <div className='flex flex-col gap-4'>
           <p>Upload Image</p>
           <input type='file' id='image' accept='image/*' hidden />
-          
+
           <label htmlFor="image">
             <img src={assets.upload_area} className='w-24 cursor-pointer' alt="" />
           </label>
@@ -40,10 +40,14 @@ const AddSong = () => {
 
       <div className='flex flex-col gap-2.5'>
         <p>Album</p>
+
         <select className='bg-transparent outline-gray-600 border-gray-400 p-2.5 w-[150px]'>
           <option value="none">None</option>
         </select>
+
       </div>
+
+      <button type='submit' className='text-base bg-black text-white py-2.5 px-14 cursor-pointer'>ADD</button>
 
     </form>
   )
