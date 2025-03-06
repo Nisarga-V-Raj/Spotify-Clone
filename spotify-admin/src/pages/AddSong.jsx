@@ -15,31 +15,37 @@ const AddSong = () => {
     e.preventDefault();
   }
 
-  return (
-    <form onSubmit={onSubmitHandler} className='flex flex-col items-start gap-8 text-gray-600'>
-      <div className='flex gap-8'>
+  return loading ? (
+    <div className='grid place-items-center min-h-[80vh]'>
+      <div className='w-16 h-16 place-self-center border-4 border-gray-400 border-t-green-800 rounded-full animate-spin'>
+        
+      </div>
+    </div>
+  ): (
+      <form onSubmit = { onSubmitHandler } className = 'flex flex-col items-start gap-8 text-gray-600'>
+      <div className = 'flex gap-8'>
 
-        <div className='flex flex-col gap-4'>
-          <p>Upload Song</p>
+        <div className = 'flex flex-col gap-4'>
+          <p>Upload Song</p >
           <input onChange={(e) => setSong(e.target.files[0])} type='file' id='song' accept='audio/*' hidden />
 
           <label htmlFor="song">
             <img src={song ? assets.upload_added : assets.upload_song} className='w-24 cursor-pointer' alt="" />
           </label>
 
-        </div>
+        </div >
 
-        <div className='flex flex-col gap-4'>
-          <p>Upload Image</p>
-          <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
+  <div className='flex flex-col gap-4'>
+    <p>Upload Image</p>
+    <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
 
-          <label htmlFor="image">
-            <img src={image ? URL.createObjectURL(image) : assets.upload_area} className='w-24 cursor-pointer' alt="" />
-          </label>
+    <label htmlFor="image">
+      <img src={image ? URL.createObjectURL(image) : assets.upload_area} className='w-24 cursor-pointer' alt="" />
+    </label>
 
-        </div>
+  </div>
 
-      </div>
+      </div >
 
       <div className='flex flex-col gap-2.5'>
         <p>Song Name</p>
@@ -62,7 +68,7 @@ const AddSong = () => {
 
       <button type='submit' className='text-base bg-black text-white py-2.5 px-14 cursor-pointer'>ADD</button>
 
-    </form>
+    </form >
   )
 }
 
