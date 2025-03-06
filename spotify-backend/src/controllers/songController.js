@@ -39,4 +39,8 @@ const listSong = async (req, res) => {
     }
 }
 
-export { addSong, listSong }
+const removeSong = async (req, res) => {
+
+}
+
+export { addSong, listSong, removeSong }
