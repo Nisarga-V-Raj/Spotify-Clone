@@ -9,6 +9,10 @@ const AddAlbum = () => {
   const [desc, setDesc] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const onSubmitHandler = async (e) => {
+
+  }
+
   return loading ? (
 
     <div className='flex flex-col gap-2.5'>
@@ -16,7 +20,7 @@ const AddAlbum = () => {
       <input className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)] type="text" placeholder=' Type Here' />
     </div>
   ) : (
-    <form className='flex flex-col items-start gap-8 text-gray-600' >
+    <form onSubmit={onSubmitHandler} className='flex flex-col items-start gap-8 text-gray-600' >
       <div className='flex flex-col gap-4'>
         <p>Upload Image</p>
         <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
@@ -42,7 +46,7 @@ const AddAlbum = () => {
 
       <button className='text-base bg-black text-white py-2.5 px-14 cursor-pointer' type='submit'>ADD</button>
 
-    </form>
+    </form >
   )
 }
 
