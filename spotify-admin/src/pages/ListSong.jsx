@@ -19,8 +19,17 @@ const ListSong = () => {
     }
   }
 
-  const removeSong = async ()=>{
-    
+  const removeSong = async (id) => {
+    try {
+      const response = await axios.post(`${url}/api/song/remove`, { id });
+      if (response.data.success) {
+        toast.success(response.data.message);
+        await fetchSongs();
+      }
+    } catch (error) {
+      console.log("Failed to remove song");
+      toast.error("Failed to remove song")
+    }
   }
 
   useEffect(() => {
@@ -39,16 +48,16 @@ const ListSong = () => {
           <b>Duration</b>
           <b>Action</b>
         </div>
-        {data.map((item, index)=>{
-            return(
-              <div key={index} className='grid grid-cols-[1fr_1fr_1fr] sm:grid-cols-[0.5fr_1fr_2fr_1fr_0.5fr] items-center gap-2.5 p-3 border border-gray-300 text-sm mr-5' >
-                <img className='w-12' src={item.image} alt="" />
-                <p>{item.name}</p>
-                <p>{item.album}</p>
-                <p>{item.duration}</p>
-                <p>x</p>
-              </div>
-            )
+        {data.map((item, index) => {
+          return (
+            <div key={index} className='grid grid-cols-[1fr_1fr_1fr] sm:grid-cols-[0.5fr_1fr_2fr_1fr_0.5fr] items-center gap-2.5 p-3 border border-gray-300 text-sm mr-5' >
+              <img className='w-12' src={item.image} alt="" />
+              <p>{item.name}</p>
+              <p>{item.album}</p>
+              <p>{item.duration}</p>
+              <p>x</p>
+            </div>
+          )
         })}
       </div>
     </div>
