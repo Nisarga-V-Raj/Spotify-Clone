@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
+import axios from 'axios'
 
 const AddSong = () => {
 
@@ -13,12 +14,24 @@ const AddSong = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('desc', desc);
+      formData.append('image', image);
+      formData.append('audio', song);
+      formData.append('album', album);
+
+      const response = await axios.post()
+    } catch (error) {
+      
+    }
   }
 
   return loading ? (
     <div className='grid place-items-center min-h-[80vh]'>
       <div className='w-16 h-16 place-self-center border-4 border-gray-400 border-t-green-800 rounded-full animate-spin'>
-        
+
       </div>
     </div>
   ): (
