@@ -27,7 +27,7 @@ const ListSong = () => {
         await fetchSongs();
       }
     } catch (error) {
-      console.log("Failed to remove song");
+      console.log("Failed to remove song", error);
       toast.error("Failed to remove song")
     }
   }
@@ -55,7 +55,7 @@ const ListSong = () => {
               <p>{item.name}</p>
               <p>{item.album}</p>
               <p>{item.duration}</p>
-              <p>x</p>
+              <p onClick={()=>removeSong(item._id)} >x</p>
             </div>
           )
         })}
