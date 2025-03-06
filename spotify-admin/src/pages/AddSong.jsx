@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddSong = () => {
   return (
-    <div></div>
+    <div>Add Song</div>
   )
 }
 

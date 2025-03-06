@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddAlbum = () => {
   return (
-    <div></div>
+    <div>Add Album</div>
   )
 }
 
