@@ -53,7 +53,7 @@ const ListAlbum = () => {
               <img className='w-12' src={item.image} alt="" />
               <p>{item.name}</p>
               <p>{item.desc}</p>
-              <input type='color' value={item.bgColour}></input>
+              <input type='color' value={item.bgColour} readOnly></input>
               <p onClick={() => removeAlbum(item._id)} className='cursor-pointer'>x</p>
             </div>
           )
