@@ -14,29 +14,29 @@ const AddAlbum = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    setLoading(true)
-      ; try {
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('desc', desc);
-        formData.append('image', image);
-        formData.append('bgColour', colour);
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('desc', desc);
+      formData.append('image', image);
+      formData.append('bgColour', colour);
 
-        const response = await axios.post(`${url}/api/album/add`, formData);
+      const response = await axios.post(`${url}/api/album/add`, formData);
 
-        if (response.data.success) {
-          toast.success("Album added successfully");
-          setDesc("");
-          setImage(false);
-          setName("");
-        }
-        else {
-          toast.error('Failed to add Album')
-        }
-      } catch (error) {
-        console.log("Album added successfully", error);
+      if (response.data.success) {
         toast.success("Album added successfully");
+        setDesc("");
+        setImage(false);
+        setName("");
       }
+      else {
+        toast.error('Failed to add Album')
+      }
+    } catch (error) {
+      console.log("Failed to add Album", error);
+      toast.success("Failed to add Album");
+    }
     setLoading(false);
   }
 
@@ -58,12 +58,12 @@ const AddAlbum = () => {
 
       <div className='flex flex-col gap-2.5'>
         <p>Album Name</p>
-        <input onChange={() => setName(e.target.value)} value={name} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
+        <input onChange={(e) => setName(e.target.value)} value={name} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
       </div>
 
       <div className='flex flex-col gap-2.5'>
         <p>Album Description</p>
-        <input onChange={() => setDesc(e.target.value)} value={desc} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
+        <input onChange={(e) => setDesc(e.target.value)} value={desc} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
       </div>
 
       <div className='flex flex-col gap-3'>
