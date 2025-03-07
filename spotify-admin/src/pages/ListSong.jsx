@@ -21,7 +21,7 @@ const ListSong = () => {
 
   const removeSong = async (id) => {
     try {
-      const response = await axios.post(`${url}/api/song/remove`, { id });
+      const response = await axios.post(`${url}/api/song/delete`, { id });
       if (response.data.success) {
         toast.success(response.data.message);
         await fetchSongs();
