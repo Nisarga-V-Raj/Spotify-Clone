@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const AddAlbum = () => {
 
   const [image, setImage] = useState(false);
-  const [colour, setColour] = useState("#ffffff");
+  const [colour, setColour] = useState("##121212");
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [loading, setLoading] = useState(false);
