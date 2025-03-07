@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
+import axios from 'axios';
+import { url } from '../App';
+import { toast } from 'react-toastify';
 
 const AddAlbum = () => {
 
@@ -10,14 +13,37 @@ const AddAlbum = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true)
+      ; try {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('desc', desc);
+        formData.append('image', image);
+        formData.append('bgColour', colour);
 
+        const response = await axios.post(`${url}/api/album/add`, formData);
+
+        if (response.data.success) {
+          toast.success("Album added successfully");
+          setDesc("");
+          setImage(false);
+          setName("");
+        }
+        else {
+          toast.error('Failed to add Album')
+        }
+      } catch (error) {
+        toast.success("Album added successfully");
+      }
+    setLoading(false);
   }
 
   return loading ? (
 
     <div className='flex flex-col gap-2.5'>
       <p>Album Name</p>
-      <input className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)] type="text" placeholder=' Type Here' />
+      <input className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
     </div>
   ) : (
     <form onSubmit={onSubmitHandler} className='flex flex-col items-start gap-8 text-gray-600' >
@@ -41,7 +67,7 @@ const AddAlbum = () => {
 
       <div className='flex flex-col gap-3'>
         <p>Background Color</p>
-        <input onChange={(e) => setColour(e.target.value)} value={ } type="color" />
+        <input onChange={(e) => setColour(e.target.value)} value={colour} type="color" />
       </div>
 
       <button className='text-base bg-black text-white py-2.5 px-14 cursor-pointer' type='submit'>ADD</button>
