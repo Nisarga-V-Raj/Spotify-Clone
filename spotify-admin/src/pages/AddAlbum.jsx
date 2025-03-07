@@ -27,11 +27,11 @@ const AddAlbum = () => {
       if (response.data.success) {
         toast.success("Album added successfully");
         setDesc("");
-        setImage(false);
+        setImage(null);
         setName("");
       }
       else {
-        toast.error('Failed to add Album')
+        toast.error('Failed to add Album');
       }
     } catch (error) {
       console.log("Failed to add Album", error);
