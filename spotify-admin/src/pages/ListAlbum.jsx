@@ -6,7 +6,6 @@ import { url } from '../App';
 const ListAlbum = () => {
   const [data, setData] = useState([]);
 
-  // Fetch albums from backend
   const fetchAlbums = async () => {
     try {
       const response = await axios.get(`${url}/api/album/list`);
@@ -21,7 +20,6 @@ const ListAlbum = () => {
     }
   };
 
-  // Remove an album
   const removeAlbum = async (id) => {
     console.log("Removing album with ID:", id); // Debugging log
 
@@ -49,7 +47,6 @@ const ListAlbum = () => {
       <p>All Albums List</p>
       <br />
       <div>
-        {/* Table Header */}
         <div className='sm:grid hidden grid-cols-[0.5fr_1fr_2fr_1fr_0.5fr] items-center gap-2.5 p-3 border border-gray-300 text-sm mr-5 bg-gray-100'>
           <b>Image</b>
           <b>Name</b>
@@ -58,7 +55,6 @@ const ListAlbum = () => {
           <b>Action</b>
         </div>
 
-        {/* Album Items */}
         {data.length > 0 ? (
           data.map((item, index) => (
             <div key={index} className='grid grid-cols-[1fr_1fr_1fr] sm:grid-cols-[0.5fr_1fr_2fr_1fr_0.5fr] items-center gap-2.5 p-3 border border-gray-300 text-sm mr-5'>
@@ -66,7 +62,7 @@ const ListAlbum = () => {
               <p>{item.name}</p>
               <p>{item.desc}</p>
               <input type='color' value={item.bgColour} readOnly />
-              <p onClick={() => removeAlbum(item._id)} className='cursor-pointer text-red-500 font-bold'>X</p>
+              <p onClick={() => removeAlbum(item._id)} className='cursor-pointer'>X</p>
             </div>
           ))
         ) : (
