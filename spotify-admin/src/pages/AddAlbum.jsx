@@ -23,33 +23,37 @@ const AddAlbum = () => {
       formData.append('bgColour', colour);
 
       const response = await axios.post(`${url}/api/album/add`, formData);
+
       if (response.data.success) {
         toast.success("Album added successfully");
+        setDesc("");
         setImage(false);
         setName("");
-        setDesc("");
-      } else {
-        toast.error("Failed to add album");
       }
-
+      else {
+        toast.error('Failed to add Album');
+      }
     } catch (error) {
-      console.log("Failed to add album", error);
-      toast.error("Failed to add album");
+      console.log("Failed to add Album", error);
+      toast.error("Failed to add Album");
     }
     setLoading(false);
   }
 
   return loading ? (
+
     <div className='grid place-items-center min-h-[80vh]'>
-      <div className='w-16 h-16 place-self-center border-4 border-gray-400 border-t-green-800 rounded-full animate-spin'></div>
+      <div className='w-16 h-16 place-self-center border-4 border-gray-400 border-t-green-800 rounded-full animate-spin'>
+
+      </div>
     </div>
   ) : (
-    <form onSubmit={onSubmitHandler} className='flex flex-col items-start gap-8 text-gray-600'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col items-start gap-8 text-gray-600' >
       <div className='flex flex-col gap-4'>
         <p>Upload Image</p>
-        <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" accept='image' hidden />
+        <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' accept='image/*' hidden />
         <label htmlFor="image">
-          <img className='w-24 cursor-pointer' src={image ? URL.createObjectURL(image) : assets.upload_area} alt="" />
+          <img className='w-24 cursor-pointer' src={image ? URL.createObjectURL(image) : assets.upload_area} alt="Album" />
         </label>
       </div>
 
@@ -68,9 +72,9 @@ const AddAlbum = () => {
         <input onChange={(e) => setColour(e.target.value)} value={colour} type="color" />
       </div>
 
-      <button className='text-base bg-black text-white py-2.5 px-14 cursor-pointer' type="submit">ADD</button>
+      <button className='text-base bg-black text-white py-2.5 px-14 cursor-pointer' type='submit'>ADD</button>
 
-    </form>
+    </form >
   )
 }
 
