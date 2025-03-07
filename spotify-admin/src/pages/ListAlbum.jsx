@@ -18,6 +18,19 @@ const ListAlbum = () => {
     }
   }
 
+  const removeAlbum = async (id) => {
+    try {
+      const response = await axios.post(`${url}/api/album/remove`, { id });
+      if (response.data.success) {
+        toast.success(response.data.message);
+        await fetchAlbums();
+      }
+    } catch (error) {
+      console.log("Failed to fetch albums", error);
+      toast.error("Failed to fetch albums");
+    }
+  }
+
   useEffect(() => {
     fetchAlbums();
   }, [])
@@ -34,8 +47,8 @@ const ListAlbum = () => {
           <b>Album Color</b>
           <b>Action</b>
         </div>
-        {data.map((item, index)=>{
-          return(
+        {data.map((item, index) => {
+          return (
             <div key={index} className='grid grid-cols-[1fr_1fr_1fr] sm:grid-cols-[0.5fr_1fr_2fr_1fr_0.5fr] items-center gap-2.5 p-3 border border-gray-300 text-sm mr-5'>
               <img className='w-12' src={item.image} alt="" />
               <p>{item.name}</p>
