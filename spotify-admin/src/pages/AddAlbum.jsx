@@ -58,7 +58,7 @@ const AddAlbum = () => {
 
       <div className='flex flex-col gap-2.5'>
         <p>Album Name</p>
-        <input onChange={(e)=>setName(e.target.value)} value={name} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder='Type Here' />
+        <input onChange={(e) => setName(e.target.value)} value={name} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder='Type Here' />
       </div>
 
       <div className='flex flex-col gap-2.5'>
