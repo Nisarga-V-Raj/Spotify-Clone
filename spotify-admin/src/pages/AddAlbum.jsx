@@ -35,7 +35,7 @@ const AddAlbum = () => {
       }
     } catch (error) {
       console.log("Failed to add Album", error);
-      toast.success("Failed to add Album");
+      toast.error("Failed to add Album");
     }
     setLoading(false);
   }
@@ -58,12 +58,12 @@ const AddAlbum = () => {
 
       <div className='flex flex-col gap-2.5'>
         <p>Album Name</p>
-        <input onChange={(e) => setName(e.target.value)} value={name} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
+        <input onChange={(e)=>setName(e.target.value)} value={name} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder='Type Here' />
       </div>
 
       <div className='flex flex-col gap-2.5'>
         <p>Album Description</p>
-        <input onChange={(e) => setDesc(e.target.value)} value={desc} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder=' Type Here' />
+        <input onChange={(e) => setDesc(e.target.value)} value={desc} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[max(40vw, 250px)]' type="text" placeholder='Type Here' />
       </div>
 
       <div className='flex flex-col gap-3'>
