@@ -118,4 +118,4 @@ const AddSong = () => {
   )
 }
 
-export default AddSong
+export default AddSong;
