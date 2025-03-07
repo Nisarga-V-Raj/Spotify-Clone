@@ -1,16 +1,26 @@
 import React, { useContext } from 'react'
 import Navbar from './Navbar'
 import { useParams } from 'react-router-dom'
-import { albumsData, assets, songsData } from '../assets/assets';
+import { assets } from '../assets/assets';
 import { PlayerContext } from '../context/PlayerContext';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const DisplayAlbum = () => {
 
     const { id } = useParams();
-    const albumData = albumsData[id];
-    const { playWithId } = useContext(PlayerContext);
+    const [albumData, setAlbumData] = useState("");
+    const { playWithId, albumsData, songsData } = useContext(PlayerContext);
 
-    return (
+    useEffect(()=>{
+        albumsData.map((item)=>{
+            if (item._id === id) {
+                setAlbumData(item);                
+            }
+        })
+    },[])
+
+    return albumData ? (
         <>
             <Navbar />
             <div className='mt-10 flex gap-8 flex-col md:flex-row md:items-end'>
@@ -50,7 +60,7 @@ const DisplayAlbum = () => {
                 ))
             }
         </>
-    )
+    ) : null
 }
 
 export default DisplayAlbum
