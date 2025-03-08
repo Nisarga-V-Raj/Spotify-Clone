@@ -76,7 +76,10 @@ const PlayerContextProvider = (props) => {
     const getAlbumsData = async () => {
         try {
             const response = await axios.get(`${url}/api/album/list`);
+            setAlbumsData(response.data.albums);
+            
         } catch (error) {
+            console.log();
             
         }
     }
@@ -99,6 +102,11 @@ const PlayerContextProvider = (props) => {
         }, 1000);
     }, [audioRef])
 
+    useEffect(()=>{
+        getSongsData();
+        getAlbumsData();
+    },[])
+
     const contextValue = {
         audioRef,
         seekBg,
@@ -111,7 +119,9 @@ const PlayerContextProvider = (props) => {
         playWithId,
         previous,
         next,
-        seekSong
+        seekSong,
+        songsData,
+        albumsData
     }
 
     return (
