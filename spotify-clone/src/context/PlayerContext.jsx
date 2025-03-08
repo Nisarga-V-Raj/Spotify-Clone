@@ -79,7 +79,7 @@ const PlayerContextProvider = (props) => {
             setAlbumsData(response.data.albums);
             
         } catch (error) {
-            console.log();
+            console.log("Failed to fetch albums",error);
             
         }
     }
