@@ -64,4 +64,4 @@ const ListSong = () => {
   )
 }
 
-export default ListSong
+export default ListSong;
