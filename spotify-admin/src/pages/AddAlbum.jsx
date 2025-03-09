@@ -78,4 +78,4 @@ const AddAlbum = () => {
   )
 }
 
-export default AddAlbum
+export default AddAlbum;
