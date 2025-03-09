@@ -1,4 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
+import axios from 'axios';
 
 export const PlayerContext = createContext();
 
@@ -59,6 +60,25 @@ const PlayerContextProvider = (props) => {
 
     const seekSong = async (e) => {
         audioRef.current.currentTime = ((e.nativeEvent.offsetX / seekBg.current.offsetWidth) * audioRef.current.duration);
+    }
+
+    const getSongsData = async () => {
+        try {
+            const response = await axios.get(`${url}/api/song/list`);
+            setSongsData(response.data.songs);
+            setTrack(response.data.songs[0]);
+        } catch (error) {
+            console.log("Failed to fetch songs", error);
+        }
+    }
+
+    const getAlbumsData = async () => {
+        try {
+            const response = await axios.get(`${url}/api/album/list`);
+            setAlbumsData(response.data.albums);
+        } catch (error) {
+            console.log("Failed to fetch albums", error);
+        }
     }
 
     useEffect(() => {
