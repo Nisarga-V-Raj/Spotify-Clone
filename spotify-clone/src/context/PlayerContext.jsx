@@ -37,9 +37,11 @@ const PlayerContextProvider = (props) => {
     }
 
     const playWithId = async (id) => {
-        await setTrack(songsData[id]);
-        await audioRef.current.play();
-        setPlayStatus(true);
+        await songsData.map((item) => {
+            if (id === item._id) {
+                setTrack(item);
+            }
+        })
     }
 
     const previous = async () => {
@@ -99,10 +101,10 @@ const PlayerContextProvider = (props) => {
         }, 1000);
     }, [audioRef])
 
-    useEffect(()=>{
+    useEffect(() => {
         getSongsData();
         getAlbumsData();
-    },[])
+    }, [])
 
     const contextValue = {
         audioRef,
