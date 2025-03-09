@@ -12,6 +12,7 @@ const PlayerContextProvider = (props) => {
     const url = 'http://localhost:4000';
 
     const [songsData, setSongsData] = useState([]);
+    const [albumsData, setAlbumsData] = useState([]);
     const [track, setTrack] = useState(songsData[0]);
     const [playStatus, setPlayStatus] = useState(false);
     const [time, setTime] = useState({
