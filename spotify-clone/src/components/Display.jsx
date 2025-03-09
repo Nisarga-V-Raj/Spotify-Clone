@@ -30,4 +30,4 @@ const Display = () => {
   )
 }
 
-export default Display
+export default Display;
