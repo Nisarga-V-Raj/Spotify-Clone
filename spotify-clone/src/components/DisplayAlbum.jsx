@@ -3,11 +3,12 @@ import Navbar from './Navbar'
 import { useParams } from 'react-router-dom'
 import { assets } from '../assets/assets';
 import { PlayerContext } from '../context/PlayerContext';
+import { useState } from 'react';
 
 const DisplayAlbum = () => {
 
     const { id } = useParams();
-    const albumData = albumsData[id];
+    const [albumData, setAlbumData] = useState("");
     const { playWithId, albumsData, songsData } = useContext(PlayerContext);
 
     return (
