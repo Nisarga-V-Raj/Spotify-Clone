@@ -6,7 +6,7 @@ import { PlayerContext } from '../context/PlayerContext';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const DisplayAlbum = (album) => {
+const DisplayAlbum = ({ album }) => {
 
     const { id } = useParams();
     const [albumData, setAlbumData] = useState("");
