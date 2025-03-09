@@ -50,6 +50,8 @@ const PlayerContextProvider = (props) => {
             await audioRef.current.play();
             setPlayStatus(true);
         }
+        await audioRef.current.play();
+        setPlayStatus(true);
     }
 
     const next = async () => {
