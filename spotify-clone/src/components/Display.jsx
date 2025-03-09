@@ -3,8 +3,12 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import DisplayHome from './DisplayHome'
 import DisplayAlbum from './DisplayAlbum'
 import { albumsData } from '../assets/assets'
+import { useContext } from 'react'
+import { PlayerContext } from '../context/PlayerContext'
 
 const Display = () => {
+
+  const {albumsData} = useContext(PlayerContext);
 
   const displayRef = useRef();
   const location = useLocation();
