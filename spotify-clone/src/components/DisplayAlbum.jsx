@@ -12,15 +12,15 @@ const DisplayAlbum = () => {
     const [albumData, setAlbumData] = useState("");
     const { playWithId, albumsData, songsData } = useContext(PlayerContext);
 
-    useEffect(()=>{
-        albumsData.map((item)=>{
+    useEffect(() => {
+        albumsData.map((item) => {
             if (item._id === id) {
                 setAlbumData(item);
             }
         })
-    },[])
+    }, [])
 
-    return (
+    return albumData ? (
         <>
             <Navbar />
             <div className='mt-10 flex gap-8 flex-col md:flex-row md:items-end'>
@@ -60,7 +60,7 @@ const DisplayAlbum = () => {
                 ))
             }
         </>
-    )
+    ) : null
 }
 
 export default DisplayAlbum;
