@@ -8,13 +8,13 @@ import { PlayerContext } from '../context/PlayerContext'
 
 const Display = () => {
 
-  const {albumsData} = useContext(PlayerContext);
+  const { albumsData } = useContext(PlayerContext);
 
   const displayRef = useRef();
   const location = useLocation();
   const isAlbum = location.pathname.includes('album');
-  const albumId = isAlbum ? location.pathname.slice(-1) : "";
-  const bgColor = albumsData[Number(albumId)].bgColor;
+  const albumId = isAlbum ? location.pathname.split('/').pop() : "";
+  const bgColor = isAlbum ? albumsData.find((x) => (x._id == albumId)).bgColour : "#121212";
 
   useEffect(() => {
     if (isAlbum) {
