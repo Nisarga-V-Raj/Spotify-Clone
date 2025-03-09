@@ -5,7 +5,7 @@ const connectDB = async () => {
         console.log("Connection Established");
         
     })
-    await mongoose.connect(`${process.env.MONGODB_URI}/SpotifyClone`);
+    await mongoose.connect(`${process.env.MONGODB_URI}/spotify`);
 }
 
 export default connectDB;
