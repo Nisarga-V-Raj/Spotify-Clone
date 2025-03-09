@@ -6,9 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import PlayerContextProvider from './context/PlayerContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <PlayerContextProvider>
-      <App />
-    </PlayerContextProvider>
-  </BrowserRouter>
+  <StrictMode>
+    <BrowserRouter>
+      <PlayerContextProvider>
+        <App />
+      </PlayerContextProvider>
+    </BrowserRouter>
+  </StrictMode>
 )

@@ -18,7 +18,7 @@ const DisplayAlbum = ({ album }) => {
                 setAlbumData(item);
             }
         })
-    }, [])
+    }, [albumsData, id])
 
     return albumData ? (
         <>

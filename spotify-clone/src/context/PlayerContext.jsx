@@ -37,29 +37,36 @@ const PlayerContextProvider = (props) => {
     }
 
     const playWithId = async (id) => {
-        await songsData.map((item) => {
-            if (id === item._id) {
-                setTrack(item);
+        const selectedSong = songsData.find((item) => item._id === id);
+        if (selectedSong) {
+            setTrack(selectedSong);
+            setPlayStatus(true);  // Ensure playback starts
+            setTimeout(() => {
+                if (audioRef.current) {
+                    audioRef.current.play();
+                }
+            }, 100); // Small delay to ensure state updates
+        }
+    };
+
+    const previous = async () => {
+        songsData.map(async (item, index) => {
+            if (track._id === item._id && index > 0) {
+                await setTrack(songsData[index - 1]);
+                await audioRef.current.play();
+                setPlayStatus(true);
             }
         })
     }
 
-    const previous = async () => {
-        if (track.id > 0) {
-            await setTrack(songsData[track.id - 1]);
-            await audioRef.current.play();
-            setPlayStatus(true);
-        }
-        await audioRef.current.play();
-        setPlayStatus(true);
-    }
-
     const next = async () => {
-        if (track.id < songsData.length - 1) {
-            await setTrack(songsData[track.id + 1]);
-            await audioRef.current.play();
-            setPlayStatus(true);
-        }
+        songsData.map(async (item, index) => {
+            if (track._id === item._id && index < songsData.length) {
+                await setTrack(songsData[index + 1]);
+                await audioRef.current.play();
+                setPlayStatus(true);
+            }
+        })
     }
 
     const seekSong = async (e) => {
