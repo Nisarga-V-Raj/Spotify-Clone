@@ -99,6 +99,11 @@ const PlayerContextProvider = (props) => {
         }, 1000);
     }, [audioRef])
 
+    useEffect(()=>{
+        getSongsData();
+        getAlbumsData();
+    },[])
+
     const contextValue = {
         audioRef,
         seekBg,
@@ -111,7 +116,9 @@ const PlayerContextProvider = (props) => {
         playWithId,
         previous,
         next,
-        seekSong
+        seekSong,
+        songsData,
+        albumsData
     }
 
     return (
