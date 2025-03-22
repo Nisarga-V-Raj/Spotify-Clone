@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar{
-    display: none;
+.scrollbar-custom::-webkit-scrollbar {
+    background: transparent;
+    width: 11px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background: transparent;
+    width: 11px;
+    transition: background 0.3s ease-in-out;
+}
+
+.scrollbar-custom:hover::-webkit-scrollbar-thumb {
+    background: #5c5b5b;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }

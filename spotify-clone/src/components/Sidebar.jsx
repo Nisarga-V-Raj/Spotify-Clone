@@ -18,7 +18,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className='bg-[#121212] h-[85%] rounded flex flex-col overflow-y-auto max-h-[85%] scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900 pr-2'>
+            <div className='bg-[#121212] h-[85%] rounded flex flex-col overflow-y-auto max-h-[85vh] pr-2 scrollbar-custom'>
                 <div className='p-4 flex items-center justify-between'>
                     <div className='flex items-center gap-3'>
                         <img className='w-8' src={assets.stack_icon} alt="" />
