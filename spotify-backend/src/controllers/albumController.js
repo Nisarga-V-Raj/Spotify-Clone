@@ -12,7 +12,6 @@ const addAlbum = async (req, res) => {
 
         const { name, desc, bgColour } = req.body;
 
-        // Upload image to Cloudinary
         const imageUpload = await cloudinary.uploader.upload(req.file.path, {
             folder: "albums",
             resource_type: "image",
@@ -22,16 +21,16 @@ const addAlbum = async (req, res) => {
             name,
             desc,
             bgColour,
-            image: imageUpload.secure_url, // Cloudinary image URL
+            image: imageUpload.secure_url,
         };
 
-        const album = new albumModel(albumData); // FIXED: Correct instantiation
+        const album = new albumModel(albumData);
         await album.save();
 
         res.json({ success: true, message: "Album Added", album });
 
     } catch (error) {
-        console.error("Error adding album:", error); // FIXED: Logging the error
+        console.error("Error adding album:", error);
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
@@ -41,7 +40,7 @@ const listAlbum = async (req, res) => {
         const allAlbums = await albumModel.find({});
         res.json({ success: true, albums: allAlbums });
     } catch (error) {
-        console.error("Error listing albums:", error); // FIXED: Logging the error
+        console.error("Error listing albums:", error);
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
@@ -51,7 +50,7 @@ const removeAlbum = async (req, res) => {
         await albumModel.findByIdAndDelete(req.body.id);
         res.json({ success: true, message: "Album Removed" });
     } catch (error) {
-        console.error("Error removing album:", error); // FIXED: Logging the error
+        console.error("Error removing album:", error);
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
