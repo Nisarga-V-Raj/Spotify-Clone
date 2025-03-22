@@ -12,8 +12,9 @@ const DisplayHome = () => {
 
   // Example categories for albums
   const albumSections = [
+    { title: "Trending Songs", data: albumsData.slice(6, 20) },
     { title: "Featured Charts", data: albumsData.slice(0, 6) },
-    { title: "New Releases", data: albumsData.slice(6, 10) },
+    { title: "New Releases", data: albumsData.slice(20, 10) },
     { title: "Trending Now", data: albumsData.slice(10, 15) }
   ];
 

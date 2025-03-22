@@ -49,7 +49,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className='mt-2 p-4 text-gray-400 text-xs'>
+            <div className='mb-100 p-4 text-gray-400 text-xs'>
                 <ul className="space-y-2">
                     <li className="flex gap-3">
                         <a href="#" className="cursor-pointer">Legal</a>
