@@ -66,6 +66,17 @@ const Sidebar = () => {
                     </li>
                 </ul>
             </div>
+
+            {/* <div className="eng-btn">
+                <button>English</button>
+            </div> */}
+
+            <div className="p-1 flex">
+                <button className="px-7 py-2 bg-transparent text-white border border-[#010000] rounded-full transition-all duration-300 hover:px-8 hover:py-[9px] hover:border-white">
+                    English
+                </button>
+            </div>
+
         </div>
     )
 }
