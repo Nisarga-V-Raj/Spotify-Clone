@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
 .scrollbar-custom::-webkit-scrollbar {
     background: transparent;
     width: 11px;
