@@ -32,8 +32,7 @@ const DisplayAlbum = ({ album }) => {
     const remainingMinutes = Math.floor((totalDurationInSeconds % 3600) / 60);
     const remainingSeconds = totalDurationInSeconds % 60;
 
-    const formattedDuration = `${totalHours > 0 ? totalHours + " hr " : ""
-        }${remainingMinutes} min ${remainingSeconds > 0 ? remainingSeconds + " sec" : ""
+    const formattedDuration = `${totalHours > 0 ? totalHours + " hr " : ""}${remainingMinutes} min ${remainingSeconds > 0 ? remainingSeconds.toString().padStart(2, '0') + " sec" : ""
         }`.trim();
 
     return albumData ? (
@@ -109,7 +108,12 @@ const DisplayAlbum = ({ album }) => {
                     <p className='text-[15px]'>{item.dateAdded ? new Date(item.dateAdded).toDateString() : "Unknown"}</p>
 
                     {/* Song Duration */}
-                    <p className='text-[15px] text-center'>{item.duration}</p>
+                    <p className='text-[15px] text-center'>
+                        {(() => {
+                            const [minutes, seconds] = item.duration.split(':');
+                            return `${minutes}:${seconds.padStart(2, '0')}`;
+                        })()}
+                    </p>
                 </div>
             ))}
         </>
