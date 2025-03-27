@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
     const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+        console.log("What do you want to play?", e.target.value);
+    };
 
     return (
         <div className='w-[35%] h-[80%] p-2 flex-col gap-2 text-white hidden lg:flex'>
@@ -12,9 +19,21 @@ const Sidebar = () => {
                     <img className='w-6' src={assets.home_icon} alt="" />
                     <p className='font-bold'>Home</p>
                 </div>
-                <div className='flex items-center gap-3 pl-8 cursor-pointer'>
+                <div className='flex items-center gap-3 pl-8 cursor-pointer' onClick={() => setIsSearching(true)}>
                     <img className='w-6' src={assets.search_icon} alt="" />
-                    <p className='font-bold'>Search</p>
+                    {isSearching ? (
+                        <input
+                            type="text"
+                            placeholder="What do you want to play?"
+                            className="w-full bg-transparent text-white border-b border-gray-400 outline-none"
+                            value={searchQuery}
+                            onChange={handleSearch}
+                            onBlur={() => setIsSearching(false)} // Hide search on blur
+                            autoFocus
+                        />
+                    ) : (
+                        <p className='font-bold'>Search</p>
+                    )}
                 </div>
             </div>
 

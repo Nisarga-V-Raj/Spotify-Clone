@@ -13,7 +13,8 @@ const PlayerContextProvider = (props) => {
 
     const [songsData, setSongsData] = useState([]);
     const [albumsData, setAlbumsData] = useState([]);
-    const [track, setTrack] = useState(null); // Start with null to avoid issues
+    const [searchTerm, setSearchTerm] = useState(""); // New state for search input
+    const [track, setTrack] = useState(null);
     const [playStatus, setPlayStatus] = useState(false);
     const [time, setTime] = useState({
         currentTime: { second: 0, minute: 0 },
@@ -92,7 +93,7 @@ const PlayerContextProvider = (props) => {
             const response = await axios.get(`${url}/api/song/list`);
             setSongsData(response.data.songs);
             if (response.data.songs.length > 0) {
-                setTrack(response.data.songs[0]); // Ensure first track is set
+                setTrack(response.data.songs[0]);
             }
         } catch (error) {
             console.log("Failed to fetch songs", error);
@@ -148,6 +149,11 @@ const PlayerContextProvider = (props) => {
         getAlbumsData();
     }, []);
 
+    // Filtered Songs Based on Search Term
+    const filteredSongs = songsData.filter(song =>
+        song.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const contextValue = {
         audioRef,
         seekBg,
@@ -165,7 +171,10 @@ const PlayerContextProvider = (props) => {
         next,
         seekSong,
         songsData,
-        albumsData
+        albumsData,
+        searchTerm, // Provide searchTerm to other components
+        setSearchTerm, // Provide function to update search
+        filteredSongs // Provide filtered songs based on search
     };
 
     return (
