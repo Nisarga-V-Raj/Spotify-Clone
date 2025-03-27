@@ -17,8 +17,9 @@ const addSong = async (req, res) => {
             album,
             image: imageUpload.secure_url,
             file: audioUpload.secure_url,
-            duration
-        }
+            duration,
+            dateAdded: new Date()
+        };        
 
         const song = songModel(songData);
         await song.save();
