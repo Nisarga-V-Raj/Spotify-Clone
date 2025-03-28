@@ -53,6 +53,11 @@ const Sidebar = () => {
                     </li>
                 </ul>
             </div>
+            <div className="mb-[-60px] pl-4 eng-btn flex items-center">
+                <button className="px-5 py-0.5 bg-transparent border border-gray-500 text-white font-bold rounded-[20px] mt-4 hover:scale-105 hover:border-white flex items-center gap-2">
+                    <i class="fa-solid fa-globe"></i> English
+                </button>
+            </div>
         </div>
     )
 }
