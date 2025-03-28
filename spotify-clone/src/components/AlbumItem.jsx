@@ -15,8 +15,8 @@ const AlbumItem = ({ image, name, desc, id, isArtist }) => {
         src={image}
         alt={name}
       />
-      <p className="font-bold mt-2 mb-1">{name}</p>
-      <p className="text-slate-200 text-sm">{desc}</p>
+      <p className="font-bold mt-2 mb-1 line-clamp-2">{name}</p>
+      <p className="text-slate-200 text-sm line-clamp-2">{desc}</p>
     </div>
   );
 };
