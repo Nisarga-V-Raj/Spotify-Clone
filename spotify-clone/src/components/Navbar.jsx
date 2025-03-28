@@ -9,7 +9,6 @@ const Navbar = () => {
 
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
-        console.log("What do you want to play?", e.target.value);
     };
 
     return (
@@ -17,13 +16,13 @@ const Navbar = () => {
             {/* Left Section - Home & Search */}
             <div className='flex items-center gap-6'>
                 {/* Home Button */}
-                <div onClick={() => navigate('/')} className='flex items-center gap-3 cursor-pointer'>
+                <div onClick={() => navigate('/')} className='flex items-center gap-3 cursor-pointer hover:scale-105'>
                     <img className='w-6' src={assets.home_icon} alt="Home Icon" />
                     <p className='font-bold'>Home</p>
                 </div>
 
                 {/* Search Bar */}
-                <div className='flex items-center gap-3 cursor-pointer' onClick={() => setIsSearching(true)}>
+                <div className='flex items-center gap-3 cursor-pointer hover:scale-105' onClick={() => setIsSearching(true)}>
                     <img className='w-6' src={assets.search_icon} alt="Search Icon" />
                     {isSearching ? (
                         <input
@@ -42,12 +41,12 @@ const Navbar = () => {
             </div>
 
             <div className='flex items-center gap-6'>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Premium</p>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Support</p>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Download</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Premium</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Support</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Download</p>
                 <p className='text-white text-[15px] font-bold'>|</p>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Install App</p>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Sign up</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Install App</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Sign up</p>
                 <p className='bg-white text-black text-[15px] font-bold px-4 py-1 rounded-2xl cursor-pointer transition-transform duration-200 hover:bg-gray-600 hover:scale-105'>Log in</p>
             </div>
         </div>

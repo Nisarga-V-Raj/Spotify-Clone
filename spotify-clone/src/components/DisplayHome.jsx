@@ -29,9 +29,9 @@ const DisplayHome = () => {
       {sections.map((section, index) => (
         <div key={index} className="mb-4">
           <div className="flex justify-between items-center">
-            <h1 className="my-5 font-bold text-2xl">{section.title}</h1>
+            <h1 className="mt-0 my-5 font-bold text-2xl cursor-pointer hover:underline">{section.title}</h1>
             <button
-              className="px-4 py-2 text-gray-300 font-bold hover:underline"
+              className="px-4 py-2 text-gray-300 font-bold cursor-pointer hover:underline hover:scale-105"
               onClick={() => setShowAll(prev => ({ ...prev, [section.key]: !prev[section.key] }))}
             >
               {showAll[section.key] ? "Show Less" : "Show All"}

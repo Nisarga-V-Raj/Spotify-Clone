@@ -36,7 +36,7 @@ const DisplayAlbum = ({ album }) => {
     return albumData ? (
         <>
             <div className='mt-2 flex gap-8 flex-col md:flex-row md:items-end'>
-                <img className='w-48 rounded transition-transform duration-200 hover:scale-105' src={albumData.image} alt="" />
+                <img className='w-48 rounded cursor-pointer transition-transform duration-200 hover:scale-105' src={albumData.image} alt="" />
                 <div className='flex flex-col self-start items-start'>
                     <p>{albumSongs.length === 1 ? "Single" : "Playlist"}</p>
                     <h2
@@ -50,15 +50,21 @@ const DisplayAlbum = ({ album }) => {
                     >
                         {albumData.name}
                     </h2>
-                    <h4>{albumData.desc}</h4>
+                    <h4>
+                        {albumData.desc.split(',').map((name, index) => (
+                            <span key={index} className="hover:underline cursor-pointer">
+                                {name.trim()}
+                            </span>
+                        )).reduce((prev, curr) => [prev, ', ', curr])}
+                    </h4>
                     <p className='mt-1'>
-                        <img className='inline-block w-5' src={assets.spotify_logo} alt="" />
-                        <b className='hover:underline'> Spotify </b>
                         {albumData.isPopular && (
                             <span className='ml-2 text-blue-500 font-semibold'>Verified Artist</span>
                         )}
-                        • {albumSongs.length > 0 && albumSongs[0].dateAdded ? new Date(albumSongs[0].dateAdded).getFullYear() : "2024 "}
-                        • <b>{albumSongs.length} {albumSongs.length === 1 ? "song" : "songs"}, </b> {formattedDuration}
+                        • {albumSongs.length > 0 && albumSongs[0].dateAdded
+                            ? new Date(albumSongs[0].dateAdded).getFullYear() + " "
+                            : "2024 "}
+                        • {albumSongs.length} {albumSongs.length === 1 ? "song" : "songs"}, {formattedDuration}
                     </p>
                 </div>
             </div>
@@ -95,11 +101,11 @@ const DisplayAlbum = ({ album }) => {
                     {/* Song Title with Image */}
                     <div className="flex items-center">
                         <img className='w-10 mr-4 rounded' src={item.image} alt="Song" />
-                        <span className="inline-block w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</span>
+                        <span className="inline-block w-[150px] overflow-hidden text-ellipsis whitespace-nowrap hover:underline">{item.name}</span>
                     </div>
 
                     {/* Album Name */}
-                    <p className='text-[15px]'>{albumData.name}</p>
+                    <p className='text-[15px] hover:underline'>{albumData.name}</p>
 
                     {/* Date Added */}
                     <p className='text-[15px]'>{item.dateAdded ? new Date(item.dateAdded).toDateString() : "Unknown"}</p>

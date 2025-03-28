@@ -15,8 +15,15 @@ const AlbumItem = ({ image, name, desc, id, isArtist }) => {
         src={image}
         alt={name}
       />
-      <p className="font-bold mt-2 mb-1 line-clamp-2">{name}</p>
-      <p className="text-slate-200 text-sm line-clamp-2">{desc}</p>
+      <p className="font-bold mt-2 mb-1 line-clamp-2 hover:underline">{name}</p>
+      <p className="text-slate-200 text-sm line-clamp-2">
+        {desc.split(", ").map((name, index, arr) => (
+          <React.Fragment key={index}>
+            <span className="hover:underline cursor-pointer">{name}</span>
+            {index !== arr.length - 1 && ", "} {/* Comma remains outside */}
+          </React.Fragment>
+        ))}
+      </p>
     </div>
   );
 };
