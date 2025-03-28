@@ -1,32 +1,57 @@
-import React from 'react'
-import { assets } from '../assets/assets'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { assets } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
 
-    const navigate = useNavigate()
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+        console.log("What do you want to play?", e.target.value);
+    };
 
     return (
-        <>
-            <div className='w-full flex justify-between items-center font-semibold'>
-                <div className='flex items-center gap-2'>
-                    <img onClick={() => navigate(-1)} className='w-8 bg-black p-2 rounded-2xl cursor-pointer' src={assets.arrow_left} alt="" />
-                    <img onClick={() => navigate(1)} className='w-8 bg-black p-2 rounded-2xl cursor-pointer' src={assets.arrow_right} alt="" />
+        <div className='w-full h-[10%] bg-[#121212] flex items-center justify-between p-4 text-white'>
+            {/* Left Section - Home & Search */}
+            <div className='flex items-center gap-6'>
+                {/* Home Button */}
+                <div onClick={() => navigate('/')} className='flex items-center gap-3 cursor-pointer'>
+                    <img className='w-6' src={assets.home_icon} alt="Home Icon" />
+                    <p className='font-bold'>Home</p>
                 </div>
-                <div className='flex items-center gap-4'>
-                    <p className='bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer transition-transform duration-200 hover:bg-gray-200 hover:scale-105'>Explore Premium</p>
-                    <p className='bg-black py-1 px-3 rounded-2xl text-[15px] cursor-pointer transition-transform duration-200 hover:bg-gray-800 hover:scale-105'>Install App</p>
-                    <p className='bg-purple-500 text-black w-7 h-7 rounded-full cursor-pointer flex items-center justify-center transition-transform duration-200 hover:bg-purple-400 hover:scale-105'>NV</p>
+
+                {/* Search Bar */}
+                <div className='flex items-center gap-3 cursor-pointer' onClick={() => setIsSearching(true)}>
+                    <img className='w-6' src={assets.search_icon} alt="Search Icon" />
+                    {isSearching ? (
+                        <input
+                            type="text"
+                            placeholder="What do you want to play?"
+                            className="w-full bg-transparent text-white border-b border-gray-400 outline-none"
+                            value={searchQuery}
+                            onChange={handleSearch}
+                            onBlur={() => setIsSearching(false)} // Hide search on blur
+                            autoFocus
+                        />
+                    ) : (
+                        <p className='font-bold'>Search</p>
+                    )}
                 </div>
             </div>
 
-            <div className='flex items-center gap-2 mt-4'>
-                <p className='bg-white text-black px-4 py-1 rounded-2xl cursor-pointer transition-transform duration-200 hover:bg-gray-200 hover:scale-105'>All</p>
-                <p className='bg-black px-4 py-1 rounded-2xl cursor-pointer transition-transform duration-200 hover:bg-gray-800 hover:scale-105'>Music</p>
-                <p className='bg-black px-4 py-1 rounded-2xl cursor-pointer transition-transform duration-200 hover:bg-gray-800 hover:scale-105'>Podcasts</p>
+            <div className='flex items-center gap-6'>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Premium</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Support</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Download</p>
+                <p className='text-white text-[15px] font-bold'>|</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Install App</p>
+                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white'>Sign up</p>
+                <p className='bg-white text-black text-[15px] font-bold px-4 py-1 rounded-2xl cursor-pointer transition-transform duration-200 hover:bg-gray-600 hover:scale-105'>Log in</p>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default Navbar;

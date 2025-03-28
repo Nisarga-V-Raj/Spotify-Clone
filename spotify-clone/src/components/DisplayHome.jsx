@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
 import AlbumItem from './AlbumItem';
 import { useContext } from 'react';
 import { PlayerContext } from '../context/PlayerContext';
@@ -7,7 +6,6 @@ import { PlayerContext } from '../context/PlayerContext';
 const DisplayHome = () => {
   const { albumsData } = useContext(PlayerContext);
 
-  // ✅ State for "Show All" toggles for each section
   const [showAll, setShowAll] = useState({
     trendingSongs: false,
     popularArtists: false,
@@ -17,7 +15,6 @@ const DisplayHome = () => {
     indiasBest: false
   });
 
-  // ✅ Assign albums dynamically based on order
   const sections = [
     { key: "trendingSongs", title: "Trending Songs", data: albumsData.slice(0, 20) },
     { key: "popularArtists", title: "Popular Artists", data: albumsData.slice(20, 40) },
@@ -28,10 +25,7 @@ const DisplayHome = () => {
   ];
 
   return (
-    <>
-      <Navbar />
-
-      {/* Dynamic Sections */}
+    <div className="p-4"> {/* ✅ Add padding for proper spacing */}
       {sections.map((section, index) => (
         <div key={index} className="mb-4">
           <div className="flex justify-between items-center">
@@ -52,13 +46,13 @@ const DisplayHome = () => {
                 desc={item.desc}
                 id={item._id}
                 image={item.image}
-                isArtist={section.key === "popularArtists"} // ✅ Only make Popular Artists' images circular
+                isArtist={section.key === "popularArtists"}
               />
             ))}
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

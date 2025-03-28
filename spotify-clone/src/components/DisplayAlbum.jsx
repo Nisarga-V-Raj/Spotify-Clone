@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import Navbar from './Navbar';
 import { useParams } from 'react-router-dom';
 import { assets } from '../assets/assets';
 import { PlayerContext } from '../context/PlayerContext';
@@ -22,9 +21,9 @@ const DisplayAlbum = ({ album }) => {
 
     // Calculate total duration
     const totalDurationInSeconds = albumSongs.reduce((sum, song) => {
-        if (!song.duration) return sum;  // Ensure duration exists
+        if (!song.duration) return sum;
         const parts = song.duration.split(':').map(Number);
-        const [minutes, seconds] = parts.length === 2 ? parts : [0, 0]; // Handle invalid formats
+        const [minutes, seconds] = parts.length === 2 ? parts : [0, 0];
         return sum + minutes * 60 + (seconds || 0);
     }, 0);
 
@@ -32,14 +31,12 @@ const DisplayAlbum = ({ album }) => {
     const remainingMinutes = Math.floor((totalDurationInSeconds % 3600) / 60);
     const remainingSeconds = totalDurationInSeconds % 60;
 
-    const formattedDuration = `${totalHours > 0 ? totalHours + " hr " : ""}${remainingMinutes} min ${remainingSeconds > 0 ? remainingSeconds.toString().padStart(2, '0') + " sec" : ""
-        }`.trim();
+    const formattedDuration = `${totalHours > 0 ? totalHours + " hr " : ""}${remainingMinutes} min ${remainingSeconds > 0 ? remainingSeconds.toString().padStart(2, '0') + " sec" : ""}`.trim();
 
     return albumData ? (
         <>
-            <Navbar />
-            <div className='mt-10 flex gap-8 flex-col md:flex-row md:items-end'>
-                <img className='w-48 rounded' src={albumData.image} alt="" />
+            <div className='mt-2 flex gap-8 flex-col md:flex-row md:items-end'>
+                <img className='w-48 rounded transition-transform duration-200 hover:scale-105' src={albumData.image} alt="" />
                 <div className='flex flex-col self-start items-start'>
                     <p>{albumSongs.length === 1 ? "Single" : "Playlist"}</p>
                     <h2
