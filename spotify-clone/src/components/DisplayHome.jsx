@@ -25,7 +25,7 @@ const DisplayHome = () => {
   ];
 
   return (
-    <div className="p-4"> {/* ✅ Add padding for proper spacing */}
+    <div className="p-4"> {/* Add padding for proper spacing */}
       {sections.map((section, index) => (
         <div key={index} className="mb-4">
           <div className="flex justify-between items-center">

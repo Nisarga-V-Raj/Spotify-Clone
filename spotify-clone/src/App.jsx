@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Sidebar from './components/Sidebar';
 import Player from './components/Player';
 import Display from './components/Display';
-import Navbar from './components/Navbar'; // ✅ Import Navbar
+import Navbar from './components/Navbar';
 import { PlayerContext } from './context/PlayerContext';
 
 const App = () => {
@@ -12,9 +12,7 @@ const App = () => {
     <div className='h-screen bg-black text-white flex flex-col'>
       {songsData.length !== 0 ? (
         <>
-          {/* ✅ Navbar is separate at the top */}
           <Navbar />
-
           <div className='h-[90%] flex '>
             <Sidebar />
             <Display />
@@ -22,7 +20,6 @@ const App = () => {
           <Player />
         </>
       ) : null}
-
       <audio ref={audioRef} src={track?.file ?? null} preload='auto'></audio>
     </div>
   );
