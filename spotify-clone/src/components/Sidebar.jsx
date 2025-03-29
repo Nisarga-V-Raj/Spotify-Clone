@@ -37,13 +37,13 @@ const Sidebar = () => {
 
             {/* Footer Section */}
             <div className='mb-100 p-4 text-gray-400 text-xs'>
-                <ul className="space-y-2">
-                    <li className="flex gap-3">
+                <ul className="space-y-3">
+                    <li className="flex gap-4">
                         <a href="#" className="cursor-pointer">Legal</a>
                         <a href="#" className="cursor-pointer">Safety & Privacy Center</a>
                         <a href="#" className="cursor-pointer">Privacy Policy</a>
                     </li>
-                    <li className="flex gap-3">
+                    <li className="flex gap-4">
                         <a href="#" className="cursor-pointer">Cookies</a>
                         <a href="#" className="cursor-pointer">About Ads</a>
                         <a href="#" className="cursor-pointer">Accessibility</a>
