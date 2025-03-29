@@ -3,22 +3,22 @@ import { assets } from '../assets/assets'
 
 const Sidebar = () => {
     return (
-        <div className='w-[35%] h-[69%] p-2 flex-col gap-2 text-white hidden lg:flex'>
+        <div className='w-[35%] h-[72%] p-2 flex-col gap-2 text-white hidden lg:flex'>
 
             {/* Library Section */}
-            <div className='bg-[#121212] h-[85%] rounded flex flex-col overflow-y-auto max-h-[85vh] pr-2 scrollbar-custom'>
+            <div className='bg-[#121212] h-[85%] rounded flex flex-col overflow-y-auto max-h-[85vh] scrollbar-custom'>
                 <div className='p-4 flex items-center justify-between'>
                     <div className='flex items-center gap-3'>
                         <img className='w-8' src={assets.stack_icon} alt="" />
                         <p className='font-semibold'>Your Library</p>
                     </div>
                     <div className='flex items-center gap-3'>
-                        <img className='w-5' src={assets.plus_icon} alt="" />
-                        <img className='w-5' src={assets.arrow_icon} alt='' />
+                        <img className='w-5 cursor-pointer' src={assets.plus_icon} alt="" />
+                        <img className='w-5 cursor-pointer' src={assets.arrow_icon} alt='' />
                     </div>
                 </div>
 
-                <div className='p-4 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start gap-1 pl-4'>
+                <div className='p-5 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start gap-1 pl-4'>
                     <h1>Create your first playlist</h1>
                     <p>It&apos;s easy, we&apos;ll help you</p>
                     <button className='px-4 py-1.5 bg-white text-[15px] text-black rounded-full mt-4 transition-transform duration-200 hover:scale-105'>
@@ -26,7 +26,7 @@ const Sidebar = () => {
                     </button>
                 </div>
 
-                <div className='p-4 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start gap-1 pl-4 mt-4'>
+                <div className='p-5 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start gap-1 pl-4 mt-4'>
                     <h1>Let&apos;s find some podcasts to follow</h1>
                     <p>We&apos;ll keep you updated on new episodes</p>
                     <button className='px-4 py-1.5 bg-white text-[15px] text-black rounded-full mt-4 transition-transform duration-200 hover:scale-105'>
@@ -36,7 +36,7 @@ const Sidebar = () => {
             </div>
 
             {/* Footer Section */}
-            <div className='mb-100 p-4 text-gray-400 text-xs'>
+            <div className='mt-3 mb-100 p-4 text-gray-400 text-xs'>
                 <ul className="space-y-3">
                     <li className="flex gap-4">
                         <a href="#" className="cursor-pointer">Legal</a>
