@@ -27,7 +27,7 @@ const DisplayHome = () => {
   return (
     <div> {/* Add padding for proper spacing */}
       {sections.map((section, index) => (
-        <div key={index} className="mb-4">
+        <div key={index} className="mb-5">
           <div className="flex justify-between items-center">
             <h1 className="mt-1 my-4 font-bold text-2xl cursor-pointer hover:underline">{section.title}</h1>
             <button
