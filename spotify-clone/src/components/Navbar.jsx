@@ -41,10 +41,16 @@ const Navbar = () => {
             </div>
 
             <div className='flex items-center gap-6'>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Premium</p>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Support</p>
-                <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Download</p>
-                <p className='text-white text-[15px] font-bold'>|</p>
+                <p className='hidden md:flex text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>
+                    Premium
+                </p>
+                <p className='hidden md:flex text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>
+                    Support
+                </p>
+                <p className='hidden md:flex text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>
+                    Download
+                </p>
+                <p className='hidden md:flex text-white text-[15px] font-bold'>|</p>
                 <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Install App</p>
                 <p className='text-gray-400 text-[15px] font-bold cursor-pointer transition-colors duration-200 hover:text-white hover:scale-105'>Sign up</p>
                 <p className='bg-white text-black text-[15px] font-bold px-4 py-1 rounded-2xl cursor-pointer transition-transform duration-200 hover:bg-gray-200 hover:scale-105'>Log in</p>

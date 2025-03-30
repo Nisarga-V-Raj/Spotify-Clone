@@ -56,38 +56,46 @@ const DisplayHome = () => {
       </div>
 
       {/* ✅ Footer */}
-      <div className='mt-7 flex justify-content: space-between'>
+      <div className='mt-16 flex justify-between'>
         <ul>
-          <li className='text-lg font-bold'><a href="#">Company</a></li>
-          <li className='text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">About</a></li>
-          <li className='text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">Jobs</a></li>
-          <li className='text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">For the Record</a></li>
+          <li className='text-lg font-bold'>Company</li>
+          <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">About</a></li>
+          <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Jobs</a></li>
+          <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">For the Record</a></li>
         </ul>
         <ul>
-          <li className='text-lg font-bold px-10'><a href="#">Communities</a></li>
-          <li className='px-10 text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">For Artists</a></li>
-          <li className='px-10 text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">Developers</a></li>
-          <li className='px-10 text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">Advertising</a></li>
-          <li className='px-10 text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">Inventors</a></li>
-          <li className='px-10 text-gray-400 text-base font-semibold py-1 font-14px hover:underline'><a href="#">Vendors</a></li>
+          <li className='text-lg font-bold px-8'>Communities</li>
+          <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">For Artists</a></li>
+          <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Developers</a></li>
+          <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Advertising</a></li>
+          <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Inventors</a></li>
+          <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Vendors</a></li>
         </ul>
         <ul>
-          <li className='text-lg font-bold px-6'><a href="#">Useful links</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Support</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Free Mobile App</a></li>
+          <li className='text-lg font-bold px-4'>Useful links</li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Support</a></li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Free Mobile App</a></li>
         </ul>
         <ul>
-          <li className='text-lg font-bold px-6'><a href="#">Spotify Plans</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Premium Individual</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Premium Duo</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Premium Family</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Premium Student</a></li>
-          <li className='px-6 text-gray-400 text-base font-semibold py-1 font-14px'><a href="#">Spotify Free</a></li>
+          <li className='text-lg font-bold px-4'>Spotify Plans</li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Individual</a></li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Duo</a></li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Family</a></li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Student</a></li>
+          <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Spotify Free</a></li>
         </ul>
-        <div>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-facebook"></i>
+
+        {/* Icons - Shifted Left by Reducing px-12 to px-4 */}
+        <div className='text-xl flex px-4 py-0 gap-3'>
+          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
+            <i className="fa-brands fa-instagram text-white"></i>
+          </div>
+          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
+            <i className="fa-brands fa-twitter text-white"></i>
+          </div>
+          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
+            <i className="fa-brands fa-facebook text-white"></i>
+          </div>
         </div>
       </div>
       <br /> <br />
