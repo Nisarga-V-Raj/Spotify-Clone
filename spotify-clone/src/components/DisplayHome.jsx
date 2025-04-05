@@ -55,7 +55,7 @@ const DisplayHome = () => {
         ))}
       </div>
 
-      {/* ✅ Footer */}
+      {/* Footer */}
       <div className='mt-16 flex justify-between'>
         <ul>
           <li className='text-lg font-bold'>Company</li>

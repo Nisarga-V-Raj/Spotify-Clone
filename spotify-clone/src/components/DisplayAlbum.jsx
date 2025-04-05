@@ -35,8 +35,10 @@ const DisplayAlbum = ({ album }) => {
 
     return albumData ? (
         <>
+            {/* Album Image + Description */}
             <div className='mt-2 flex gap-8 flex-col md:flex-row md:items-end'>
                 <img className='w-48 rounded cursor-pointer transition-transform duration-200 hover:scale-105' src={albumData.image} alt="" />
+
                 <div className='flex flex-col self-start items-start'>
                     <p>{albumSongs.length === 1 ? "Single" : "Playlist"}</p>
                     <h2
@@ -67,6 +69,42 @@ const DisplayAlbum = ({ album }) => {
                         • {albumSongs.length} {albumSongs.length === 1 ? "song" : "songs"}, {formattedDuration}
                     </p>
                 </div>
+            </div>
+
+            {/* Play + Plus Buttons (side-by-side in a row) */}
+            <div className="mt-6 flex items-center justify-between">
+                {/* Left group: Play, Plus, 3-dot */}
+                <div className="flex items-center gap-4">
+                    {/* Play Button */}
+                    <button
+                        onClick={() => {
+                            if (albumSongs.length > 0) playWithId(albumSongs[0]._id);
+                        }}
+                        className="bg-green-500 hover:bg-green-600 font-bold py-4 px-5 rounded-full transition duration-200 shadow-md transform hover:scale-105"
+                    >
+                        <i className="fa-solid fa-play text-black text-[30px] text-center"></i>
+                    </button>
+
+                    {/* Plus Button */}
+                    <button
+                        className="group w-9 h-9 flex items-center justify-center bg-[#121212] hover:bg-[#2a2a2a] border-2 border-gray-300 rounded-full transition-transform duration-200 transform hover:scale-110">
+                        <i className="fa-solid fa-plus text-gray-300 text-base group-hover:text-white transition-colors duration-200"></i>
+                    </button>
+
+                    {/* 3-dot Button */}
+                    <button
+                        className="group w-9 h-9 flex items-center justify-center transition-transform duration-200 transform hover:scale-110">
+                        <i className="fa-solid fa-ellipsis text-gray-300 text-lg group-hover:text-white transition-colors duration-200"></i>
+                    </button>
+                </div>
+
+                {/* Right corner: List Icon */}
+                <button className="group flex items-center gap-2">
+                    <span className="text-gray-300 group-hover:text-white transition-colors duration-200 text-base font-semibold">
+                        List
+                    </span>
+                    <i className="fa-solid fa-bars text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i>
+                </button>
             </div>
 
             {/* Header Row */}
@@ -119,6 +157,53 @@ const DisplayAlbum = ({ album }) => {
                     </p>
                 </div>
             ))}
+
+            <div className='mt-16 flex justify-between'>
+                <ul>
+                    <li className='text-lg font-bold'>Company</li>
+                    <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">About</a></li>
+                    <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Jobs</a></li>
+                    <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">For the Record</a></li>
+                </ul>
+                <ul>
+                    <li className='text-lg font-bold px-8'>Communities</li>
+                    <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">For Artists</a></li>
+                    <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Developers</a></li>
+                    <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Advertising</a></li>
+                    <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Inventors</a></li>
+                    <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Vendors</a></li>
+                </ul>
+                <ul>
+                    <li className='text-lg font-bold px-4'>Useful links</li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Support</a></li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Free Mobile App</a></li>
+                </ul>
+                <ul>
+                    <li className='text-lg font-bold px-4'>Spotify Plans</li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Individual</a></li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Duo</a></li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Family</a></li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Student</a></li>
+                    <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Spotify Free</a></li>
+                </ul>
+
+                {/* Icons - Shifted Left by Reducing px-12 to px-4 */}
+                <div className='text-xl flex px-4 py-0 gap-3'>
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
+                        <i className="fa-brands fa-instagram text-white"></i>
+                    </div>
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
+                        <i className="fa-brands fa-twitter text-white"></i>
+                    </div>
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
+                        <i className="fa-brands fa-facebook text-white"></i>
+                    </div>
+                </div>
+            </div>
+            <br /> <br />
+            <hr /> <br /> <br />
+            <p className='text-gray-400 text-sm font-semibold'>&copy; 2025 Spotify AB</p> <br />
+
         </>
     ) : null;
 };
