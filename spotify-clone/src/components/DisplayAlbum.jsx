@@ -103,7 +103,9 @@ const DisplayAlbum = ({ album }) => {
                     <span className="text-gray-300 group-hover:text-white transition-colors duration-200 text-base font-semibold">
                         List
                     </span>
-                    <i className="fa-solid fa-bars text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i>
+                    {/* <i className="fa-solid fa-bars text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i> */}
+                    {/* <i className="fa-thin fa-list-ul text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i> */}
+                    <i class="fa-solid fa-list-ul text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i>
                 </button>
             </div>
 
