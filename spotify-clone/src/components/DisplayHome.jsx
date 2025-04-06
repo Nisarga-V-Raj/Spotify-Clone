@@ -21,7 +21,7 @@ const DisplayHome = () => {
     { key: "popularAlbumsSingles", title: "Popular Albums and Singles", data: albumsData.slice(40, 60) },
     { key: "popularRadio", title: "Popular Radio", data: albumsData.slice(60, 80) },
     { key: "featuredCharts", title: "Featured Charts", data: albumsData.slice(80, 86) },
-    { key: "indiasBest", title: "India's Best", data: albumsData.slice(86, 98) }
+    { key: "indiasBest", title: "India's Best", data: albumsData.slice(86, 97) }
   ];
 
   return (

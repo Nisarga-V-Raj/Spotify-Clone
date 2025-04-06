@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { assets } from '../assets/assets';
 import { PlayerContext } from '../context/PlayerContext';
 
-const DisplayAlbum = ({ album }) => {
+const DisplayAlbum = () => {
     const { id } = useParams();
     const [albumData, setAlbumData] = useState(null);
     const { playWithId, albumsData, songsData } = useContext(PlayerContext);
@@ -16,10 +16,9 @@ const DisplayAlbum = ({ album }) => {
         }
     }, [albumsData, id]);
 
-    // Filter songs that belong to this album
-    const albumSongs = songsData.filter(song => song.album === album?.name);
+    // Use albumData.name dynamically
+    const albumSongs = songsData.filter(song => song.album === albumData?.name);
 
-    // Calculate total duration
     const totalDurationInSeconds = albumSongs.reduce((sum, song) => {
         if (!song.duration) return sum;
         const parts = song.duration.split(':').map(Number);
@@ -33,9 +32,13 @@ const DisplayAlbum = ({ album }) => {
 
     const formattedDuration = `${totalHours > 0 ? totalHours + " hr " : ""}${remainingMinutes} min ${remainingSeconds > 0 ? remainingSeconds.toString().padStart(2, '0') + " sec" : ""}`.trim();
 
-    return albumData ? (
+    if (!albumData) {
+        return <div className='text-white text-lg mt-10'>Loading Album...</div>;
+    }
+
+    return (
         <>
-            {/* Album Image + Description */}
+            {/* Album Header */}
             <div className='mt-2 flex gap-8 flex-col md:flex-row md:items-end'>
                 <img className='w-48 rounded cursor-pointer transition-transform duration-200 hover:scale-105' src={albumData.image} alt="" />
 
@@ -71,11 +74,9 @@ const DisplayAlbum = ({ album }) => {
                 </div>
             </div>
 
-            {/* Play + Plus Buttons (side-by-side in a row) */}
+            {/* Play & Control Buttons */}
             <div className="mt-6 flex items-center justify-between">
-                {/* Left group: Play, Plus, 3-dot */}
                 <div className="flex items-center gap-4">
-                    {/* Play Button */}
                     <button
                         onClick={() => {
                             if (albumSongs.length > 0) playWithId(albumSongs[0]._id);
@@ -84,32 +85,24 @@ const DisplayAlbum = ({ album }) => {
                     >
                         <i className="fa-solid fa-play text-black text-[30px] text-center"></i>
                     </button>
-
-                    {/* Plus Button */}
-                    <button
-                        className="group w-9 h-9 flex items-center justify-center bg-[#121212] hover:bg-[#2a2a2a] border-2 border-gray-300 rounded-full transition-transform duration-200 transform hover:scale-110">
+                    <button className="group w-9 h-9 flex items-center justify-center bg-[#121212] hover:bg-[#2a2a2a] border-2 border-gray-300 rounded-full transition-transform duration-200 transform hover:scale-110">
                         <i className="fa-solid fa-plus text-gray-300 text-base group-hover:text-white transition-colors duration-200"></i>
                     </button>
-
-                    {/* 3-dot Button */}
-                    <button
-                        className="group w-9 h-9 flex items-center justify-center transition-transform duration-200 transform hover:scale-110">
+                    <button className="group w-9 h-9 flex items-center justify-center transition-transform duration-200 transform hover:scale-110">
                         <i className="fa-solid fa-ellipsis text-gray-300 text-lg group-hover:text-white transition-colors duration-200"></i>
                     </button>
                 </div>
 
-                {/* Right corner: List Icon */}
+                {/* List button */}
                 <button className="group flex items-center gap-2">
                     <span className="text-gray-300 group-hover:text-white transition-colors duration-200 text-base font-semibold">
                         List
                     </span>
-                    {/* <i className="fa-solid fa-bars text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i> */}
-                    {/* <i className="fa-thin fa-list-ul text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i> */}
-                    <i class="fa-solid fa-list-ul text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i>
+                    <i className="fa-solid fa-list-ul text-gray-300 group-hover:text-white text-lg transition-colors duration-200"></i>
                 </button>
             </div>
 
-            {/* Header Row */}
+            {/* Table Header */}
             <div className='grid grid-cols-[50px_1.5fr_1fr_1fr_50px] mt-10 mb-4 px-2 text-[#a7a7a7] items-center'>
                 <p className="text-center">#</p>
                 <p className="text-left">Title</p>
@@ -128,8 +121,8 @@ const DisplayAlbum = ({ album }) => {
                     onClick={() => playWithId(item._id)}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    className='grid grid-cols-[50px_1.5fr_1fr_1fr_50px] gap-2 px-2 py-3 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer'>
-                    {/* # or Play Button on Hover */}
+                    className='grid grid-cols-[50px_1.5fr_1fr_1fr_50px] gap-2 px-2 py-3 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-pointer'
+                >
                     <div className='flex justify-center w-full'>
                         {hoveredIndex === index ? (
                             <img className='w-4' src={assets.play_icon} alt="Play" />
@@ -138,19 +131,13 @@ const DisplayAlbum = ({ album }) => {
                         )}
                     </div>
 
-                    {/* Song Title with Image */}
                     <div className="flex items-center">
                         <img className='w-10 mr-4 rounded' src={item.image} alt="Song" />
                         <span className="inline-block w-[150px] overflow-hidden text-ellipsis whitespace-nowrap hover:underline">{item.name}</span>
                     </div>
 
-                    {/* Album Name */}
                     <p className='text-[15px] hover:underline'>{albumData.name}</p>
-
-                    {/* Date Added */}
                     <p className='text-[15px]'>{item.dateAdded ? new Date(item.dateAdded).toDateString() : "Unknown"}</p>
-
-                    {/* Song Duration */}
                     <p className='text-[15px] text-center'>
                         {(() => {
                             const [minutes, seconds] = item.duration.split(':');
@@ -160,13 +147,49 @@ const DisplayAlbum = ({ album }) => {
                 </div>
             ))}
 
+            {/* Footer */}
+            <div className='text-sm text-gray-400 font-semibold mt-8'>
+                <p className='text-lg'>January 15, 2025</p>
+                <p>© 2025 Tuffan Music</p>
+                <p>℗ 2025 Tuffan Music</p>
+            </div>
+
+            {/* More by Artist */}
+            {albumData && (
+                <div className='mt-14'>
+                    <h2 className='text-2xl font-bold mb-5 hover:underline cursor-pointer'>More by Masson Sharma</h2>
+                    <div className='grid grid-cols-5 gap-4'>
+                        {albumsData
+                            .filter(item =>
+                                item.desc.toLowerCase().includes("masson sharma") &&
+                                item._id !== albumData._id
+                            )
+                            .slice(0, 5)
+                            .map((item, idx) => (
+                                <div key={idx} className="cursor-pointer">
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className='rounded w-full mb-2 transition-transform duration-200 hover:scale-105'
+                                    />
+                                    <p className='text-white font-semibold truncate hover:underline'>{item.name}</p>
+                                    <p className='text-gray-400 text-sm truncate'>{item.desc}</p>
+                                </div>
+                            ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Footer Links */}
             <div className='mt-16 flex justify-between'>
+                {/* Company Info */}
                 <ul>
                     <li className='text-lg font-bold'>Company</li>
                     <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">About</a></li>
                     <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Jobs</a></li>
                     <li className='text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">For the Record</a></li>
                 </ul>
+                {/* Communities */}
                 <ul>
                     <li className='text-lg font-bold px-8'>Communities</li>
                     <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">For Artists</a></li>
@@ -175,11 +198,13 @@ const DisplayAlbum = ({ album }) => {
                     <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Inventors</a></li>
                     <li className='px-8 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Vendors</a></li>
                 </ul>
+                {/* Useful Links */}
                 <ul>
                     <li className='text-lg font-bold px-4'>Useful links</li>
                     <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Support</a></li>
                     <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Free Mobile App</a></li>
                 </ul>
+                {/* Spotify Plans */}
                 <ul>
                     <li className='text-lg font-bold px-4'>Spotify Plans</li>
                     <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Individual</a></li>
@@ -188,8 +213,7 @@ const DisplayAlbum = ({ album }) => {
                     <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Premium Student</a></li>
                     <li className='px-4 text-gray-400 text-base font-semibold py-1 hover:text-white hover:underline'><a href="#">Spotify Free</a></li>
                 </ul>
-
-                {/* Icons - Shifted Left by Reducing px-12 to px-4 */}
+                {/* Social Icons */}
                 <div className='text-xl flex px-4 py-0 gap-3'>
                     <div className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-gray-400 cursor-pointer transition duration-200">
                         <i className="fa-brands fa-instagram text-white"></i>
@@ -202,12 +226,10 @@ const DisplayAlbum = ({ album }) => {
                     </div>
                 </div>
             </div>
-            <br /> <br />
-            <hr /> <br /> <br />
+            <br /><hr /><br />
             <p className='text-gray-400 text-sm font-semibold'>&copy; 2025 Spotify AB</p> <br />
-
         </>
-    ) : null;
+    );
 };
 
 export default DisplayAlbum;
