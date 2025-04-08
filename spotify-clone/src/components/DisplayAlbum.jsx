@@ -154,32 +154,6 @@ const DisplayAlbum = () => {
                 <p>℗ 2025 Tuffan Music</p>
             </div>
 
-            {/* More by Artist */}
-            {albumData && (
-                <div className='mt-14'>
-                    <h2 className='text-2xl font-bold mb-5 hover:underline cursor-pointer'>More by Masson Sharma</h2>
-                    <div className='grid grid-cols-5 gap-4'>
-                        {albumsData
-                            .filter(item =>
-                                item.desc.toLowerCase().includes("masson sharma") &&
-                                item._id !== albumData._id
-                            )
-                            .slice(0, 5)
-                            .map((item, idx) => (
-                                <div key={idx} className="cursor-pointer">
-                                    <img
-                                        src={item.image}
-                                        alt={item.name}
-                                        className='rounded w-full mb-2 transition-transform duration-200 hover:scale-105'
-                                    />
-                                    <p className='text-white font-semibold truncate hover:underline'>{item.name}</p>
-                                    <p className='text-gray-400 text-sm truncate'>{item.desc}</p>
-                                </div>
-                            ))}
-                    </div>
-                </div>
-            )}
-
             {/* Footer Links */}
             <div className='mt-16 flex justify-between'>
                 {/* Company Info */}
