@@ -49,11 +49,11 @@ const AddSong = () => {
       if (response.data.success) {
         setAlbumData(response.data.albums);
       } else {
-        toast.error("Failed to load albums data")
+        toast.error("Failed to load songs data")
       }
     } catch (error) {
-      console.log("Failed to load albums data", error);
-      toast.error("Failed to load albums data");
+      console.log("Failed to load songs data", error);
+      toast.error("Failed to load songs data");
     }
   }
 
