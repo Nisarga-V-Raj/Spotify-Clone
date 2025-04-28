@@ -8,6 +8,7 @@ const DisplayAlbum = () => {
     const [albumData, setAlbumData] = useState(null);
     const { playWithId, albumsData, songsData } = useContext(PlayerContext);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [showAllSongs, setShowAllSongs] = useState(false);
 
     useEffect(() => {
         const albumFound = albumsData.find(item => item._id === id);
@@ -115,7 +116,7 @@ const DisplayAlbum = () => {
             <hr />
 
             {/* Song List */}
-            {albumSongs.map((item, index) => (
+            {(showAllSongs ? albumSongs : albumSongs.slice(0, 5)).map((item, index) => (
                 <div
                     key={index}
                     onClick={() => playWithId(item._id)}
@@ -146,13 +147,23 @@ const DisplayAlbum = () => {
                     </p>
                 </div>
             ))}
+            {albumSongs.length > 5 && (
+                <div className="text-sm flex mt-6">
+                    <button
+                        className="px-4 py-4 text-gray-300 font-bold cursor-pointer hover:underline hover:scale-105 transition-transform duration-200"
+                        onClick={() => setShowAllSongs(prev => !prev)}
+                    >
+                        {showAllSongs ? "Show Less" : "See More"}
+                    </button>
+                </div>
+            )}
 
             {/* Footer */}
-            <div className='text-sm text-gray-400 font-semibold mt-8'>
+            {/* <div className='text-sm text-gray-400 font-semibold mt-8'>
                 <p className='text-lg'>January 15, 2025</p>
                 <p>© 2025 Tuffan Music</p>
                 <p>℗ 2025 Tuffan Music</p>
-            </div>
+            </div> */}
 
             {/* Footer Links */}
             <div className='mt-16 flex justify-between'>
