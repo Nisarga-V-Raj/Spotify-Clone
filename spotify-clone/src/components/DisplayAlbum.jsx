@@ -150,7 +150,7 @@ const DisplayAlbum = () => {
             {albumSongs.length > 5 && (
                 <div className="text-sm flex mt-6">
                     <button
-                        className="px-4 py-4 text-gray-300 font-bold cursor-pointer hover:underline hover:scale-105 transition-transform duration-200"
+                        className="px-4 text-gray-300 font-bold cursor-pointer hover:underline hover:scale-105 transition-transform duration-200"
                         onClick={() => setShowAllSongs(prev => !prev)}
                     >
                         {showAllSongs ? "Show Less" : "See More"}
